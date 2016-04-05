@@ -1,8 +1,9 @@
 # GMR-PyTerminalClient
 Python terminal client for Giant Multiplayer Robot API. http://multiplayerrobot.com/About/Api
+
 GMR is a tool for playing Civilization 5 against other humans.
 
-copy pasting from original forum post:
+original forum post
 (http://steamcommunity.com/groups/multiplayerrobot/discussions/0/371918937280157414/)
 
 Hei,
