@@ -21,9 +21,11 @@ when travelling (like now) I'm on linux. I got fed up with the unresponsive GMR 
 
 
 Oh and maybe I was a little short on words describing how uploads work...
+
 1) When you download a game it will be names as following: gameId-turn
 The turn is the total of submitted turns, sadly not the ingame turn number.
 When you load the game, it is in first position, because it is the newest file in the folder
+
 2) When you save the game, find the file you just loaded.
 This is slightly more tricky as the files are no longer sorted by date.
 It helps to have fewer files in the folder.
