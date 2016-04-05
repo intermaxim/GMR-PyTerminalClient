@@ -1,19 +1,24 @@
 # GMR-PyTerminalClient
 Python terminal client for Giant Multiplayer Robot API. http://multiplayerrobot.com/About/Api
+GMR is a tool for playing Civilization 5 against other humans.
 
-copy pasting from a forum post (http://steamcommunity.com/groups/multiplayerrobot/discussions/0/371918937280157414/)
+copy pasting from original forum post:
+(http://steamcommunity.com/groups/multiplayerrobot/discussions/0/371918937280157414/)
 
 Hei,
 
 when travelling (like now) I'm on linux. I got fed up with the unresponsive GMR website and wrote a quick and dirty terminal client in python:
 
-http://pastebin.com/ZK2CjfJM
-
 1) Paste the code into a file, for example "/home/me/gmr-client.py"
+
 2) Put in your authcode from the GMR website (you find it under download)
+
 3) Edit the path to your civ-saves and save the file.
+
 4) Run the client in a terminal with: python /home/me/gmr-client.py
+
 5) Enjoy!
+
 
 Oh and maybe I was a little short on words describing how uploads work...
 1) When you download a game it will be names as following: gameId-turn
