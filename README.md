@@ -10,8 +10,9 @@ original forum post
 
 2) Edit the path to your civ-saves and save the file.
 
-3) Run the file and enjoy
+2a) Install requests if necessary (http://docs.python-requests.org/en/master/user/install/#install). Hope that is the only extra dependency?!
 
+3) Run the file and enjoy
 
 
 Oh and maybe I was a little short on words describing how uploads work...
