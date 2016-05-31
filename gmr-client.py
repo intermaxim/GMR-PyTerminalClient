@@ -1,8 +1,7 @@
-import requests, json, datetime, urllib2, os
+import requests, json, datetime, urllib2, httplib, os
 
-authKey = "yourkey"
-savepath = "yourpath"
-# something like "/home/intermaxim/.local/share/Aspyr/Sid Meier's Civilization 5/Saves/hotseat/"
+authKey = "your key" #find it on gmr-site
+savepath = "your path" #like '/home/maxe/.local/share/Aspyr/Sid Meier's Civilization 5/Saves/hotseat/'
 
 playerID = ""
 mygames = []
@@ -90,17 +89,17 @@ def upload():
     if response == "c":
         menu()
     else:
-        try:
-            file = savepath + choices[int(response)-1]["fileName"]
-            url = "http://multiplayerrobot.com/api/Diplomacy/SubmitTurn?authKey="+authKey+"&turnId="+ \
-                  str(choices[int(response)-1]["TurnID"])
-            #TODO needs a progress bar! https://github.com/niltonvolpato/python-progressbar
-            print "sending file now.... this might take a while..."
-            r = requests.post(url, files={'upload.Civ5Save': open(file, 'rb')})
-            print r.text
-        except:
-            print "Sorry, something went wrong... Upload didnt work."
-            menu()
+        turnID = str(choices[int(response)-1]["TurnID"])
+        file = savepath + choices[int(response)-1]["fileName"]
+        url = "/api/Diplomacy/SubmitTurn?authKey="+authKey+"&turnId="+turnID
+        #TODO needs a progress bar! https://github.com/niltonvolpato/python-progressbar
+        print "sending file now.... this might take a while..."
+        h = httplib.HTTPConnection('multiplayerrobot.com:80')
+        headers = {"Content-type": "application/x-www-form-urlen coded", "Accept": "text/plain"}
+        with open(file, "rb") as f:
+            h.request('POST', url, f, headers)
+            r = h.getresponse()
+        print r.read()
         menu()
         
 def download():
