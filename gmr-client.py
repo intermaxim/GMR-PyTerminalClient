@@ -2,6 +2,7 @@ import requests, json, datetime, urllib2, httplib, os
 
 authKey = "your key" #find it on gmr-site
 savepath = "your path" #like '/home/maxe/.local/share/Aspyr/Sid Meier's Civilization 5/Saves/hotseat/'
+backup = "your path/backup/"  # to move file in this backup folder after upload
 
 playerID = ""
 mygames = []
@@ -100,6 +101,15 @@ def upload():
             h.request('POST', url, f, headers)
             r = h.getresponse()
         print r.read()
+
+        # to move file in the backup folder after upload
+        import shutil 
+        shutil.move(file, backup)     
+        parts = name.split("-u")                     
+        file2 = savepath + parts[0]    
+        shutil.move(file2, backup)
+        # that's it!
+        
         menu()
         
 def download():
