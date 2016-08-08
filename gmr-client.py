@@ -36,14 +36,15 @@ def update(raw):
         if int(game["CurrentTurn"]["UserId"]) == int(playerID):
             turn = str(game["CurrentTurn"]["Number"])
             
-            #calculate remaining turntimer
-            expires = game["CurrentTurn"]["Expires"]
-            if expires != None:
-                expires = datetime.datetime.strptime(expires,"%Y-%m-%dT%H:%M:%S.%f")
-                expires = expires - datetime.datetime.utcnow()
-            print str(counter) + ") " + game["Name"] + " _time remaining: " + str(expires)
+            #calculate remaining turntimer - crashes on some games
+	#
+        #    expires = game["CurrentTurn"]["Expires"]
+        #    if expires != None:
+        #        expires = datetime.datetime.strptime(expires,"%Y-%m-%dT%H:%M:%S.%f")
+        #        expires = expires - datetime.datetime.utcnow()
+            print str(counter) + ") " + game["Name"] # + " _time remaining: " + str(expires)
             mygames.append({"GameId" : game["GameId"],"Name" : game["Name"],
-                            "Remaining" : expires, "Counter" : counter,
+                            "Counter" : counter, # "Remaining" : expires,
                             "Turn" : turn, "TurnID" : game["CurrentTurn"]["TurnId"]})
             counter += 1
     print '------------end of list----------'
@@ -102,13 +103,11 @@ def upload():
             r = h.getresponse()
         print r.read()
 
-        # to move file in the backup folder after upload
+        # move files to backup folder
         import shutil 
-        shutil.move(file, backup)     
-        parts = name.split("-u")                     
-        file2 = savepath + parts[0]    
+        shutil.move(file, backup)
+        file2 = file.replace('-u', '') #original file
         shutil.move(file2, backup)
-        # that's it!
         
         menu()
         
